@@ -46,9 +46,9 @@ def GetAbsFileDir(file: str) -> str:
     return dir
 
 
-def GetFileDirAndName(file: str) -> str:
-    path, ext = os.path.splitext(file)
-    return path
+def GetFileName(file: str) -> str:
+    path, name = os.path.split(file)
+    return name
 
 
 def GenerateHashes() -> None:
@@ -60,17 +60,19 @@ def GenerateHashes() -> None:
     files.extend(glob(os.path.join(toolsDir, "**", "*.zip"), recursive=True))
     files.extend(glob(os.path.join(toolsDir, "**", "*.7z"), recursive=True))
 
-    count: int = 3
     file: str
     for file in files:
-        filename: str = GetFileDirAndName(file)
+        newDir: str = os.path.join(GetAbsFileDir(file), "hashes")
+        newFile: str = os.path.join(newDir, GetFileName(file))
+        os.makedirs(newDir, exist_ok=True)
+
         md5: str = GetFileMd5(file)
         sha256: str = GetFileSha256(file)
         size: str = GetFileSize(file)
 
-        WriteFile(filename + ".md5", str.encode(md5))
-        WriteFile(filename + ".sha256", str.encode(sha256))
-        WriteFile(filename + ".size", str.encode(str(size)))
+        WriteFile(newFile + ".md5", str.encode(md5))
+        WriteFile(newFile + ".sha256", str.encode(sha256))
+        WriteFile(newFile + ".size", str.encode(str(size)))
 
 
 if __name__ == "__main__":
