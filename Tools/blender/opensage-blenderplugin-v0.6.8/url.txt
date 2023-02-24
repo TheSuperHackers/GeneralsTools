@@ -1,0 +1,1 @@
+https://github.com/TheSuperHackers/OpenSAGE.BlenderPlugin/releases/download/v0.6.8/io_mesh_w3d.zip
