@@ -1,0 +1,5 @@
+Executable Sourced from
+https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan/releases/tag/v0.2.0
+
+Models sourced from
+https://github.com/AaronFeng753/Waifu2x-Extension-GUI/releases/tag/v3.105.01

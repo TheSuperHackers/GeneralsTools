@@ -1,0 +1,1 @@
+Copy png, jpg or webp images to import folder. Run any of the batch files.
